@@ -1,0 +1,18 @@
+,mean_abs_shap
+Lead time (days booked ahead),0.09901219326944091
+Same-day appointment,0.09011720283953141
+Patient age,0.033656034047466137
+Prior no-show rate,0.019135156999996364
+Number of prior no-shows,0.011680023686656748
+Hypertension,0.0046540781237297164
+First visit (no history),0.0037767662905926276
+Number of prior visits,0.0037691606489497213
+Welfare programme enrolment,0.0030224489634028844
+Chronic conditions (count),0.0026911634084657017
+Appointment on Wednesday,0.0022073868154352454
+Appointment on Monday,0.001769709402179034
+Appointment on Thursday,0.0016509219687460017
+Appointment on Friday,0.001397094198818078
+Appointment on Tuesday,0.0009826287187076847
+Diabetes,0.0008714628850262453
+Appointment on Saturday,7.461403699791589e-07

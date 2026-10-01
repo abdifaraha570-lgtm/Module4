@@ -1,0 +1,1060 @@
+{
+  "run_date": "2026-10-01",
+  "author": "Abdi Farah Ahmed",
+  "data_md5": "8b87e2989f1bfd3573b11e71868f05de",
+  "data_route": "module3_splits",
+  "data_files": {
+    "train": "C:\\Users\\Lbash\\Downloads\\BAN6800_Module4_Submission\\BAN6800_Module4_Submission\\jjushycsh-noshow-analytics\\data\\processed\\train.parquet",
+    "validation": "C:\\Users\\Lbash\\Downloads\\BAN6800_Module4_Submission\\BAN6800_Module4_Submission\\jjushycsh-noshow-analytics\\data\\processed\\validation.parquet",
+    "test": "C:\\Users\\Lbash\\Downloads\\BAN6800_Module4_Submission\\BAN6800_Module4_Submission\\jjushycsh-noshow-analytics\\data\\processed\\test.parquet"
+  },
+  "m3": {
+    "bias_flags": {
+      "flags": [
+        {
+          "attribute": "has_disability",
+          "group": "1",
+          "issue": "under-represented",
+          "share": 0.0201
+        }
+      ],
+      "split_drift": [
+        {
+          "attribute": "gender",
+          "max_share_diff_across_splits": 0.0186
+        },
+        {
+          "attribute": "age_band",
+          "max_share_diff_across_splits": 0.0145
+        },
+        {
+          "attribute": "scholarship",
+          "max_share_diff_across_splits": 0.004
+        },
+        {
+          "attribute": "has_disability",
+          "max_share_diff_across_splits": 0.0049
+        }
+      ],
+      "note": "Flags trigger human review by the AI & Data Governance Committee; they do not delete groups or auto-reweight data."
+    },
+    "data_quality_report": {
+      "rows_received": {
+        "rows_affected": 110527,
+        "action": "input"
+      },
+      "missing_values_any_column": {
+        "rows_affected": 0,
+        "action": "counted; rows with a missing target are dropped"
+      },
+      "unparseable_dates": {
+        "rows_affected": 0,
+        "action": "dropped"
+      },
+      "missing_or_invalid_target": {
+        "rows_affected": 0,
+        "action": "dropped"
+      },
+      "duplicate_appointment_id": {
+        "rows_affected": 0,
+        "action": "dropped (keep first)"
+      },
+      "identical_rows_except_appointment_id": {
+        "rows_affected": 618,
+        "action": "dropped (keep first)"
+      },
+      "same_patient_same_booking_time_different_details": {
+        "rows_affected": 1432,
+        "action": "kept - separate visits; flagged for HIS review"
+      },
+      "age_out_of_range_(<0_or_>110)": {
+        "rows_affected": 5,
+        "action": "dropped - cannot be a valid patient age"
+      },
+      "gender_not_F_or_M": {
+        "rows_affected": 0,
+        "action": "set to 'U' (unknown), kept"
+      },
+      "scheduled_after_appointment": {
+        "rows_affected": 5,
+        "action": "dropped - impossible sequence"
+      },
+      "handicap_level_above_1": {
+        "rows_affected": 196,
+        "action": "kept; binary has_disability flag derived"
+      },
+      "rows_after_cleaning": {
+        "rows_affected": 109899,
+        "action": "output"
+      },
+      "no_show_rate_after_cleaning": {
+        "rows_affected": 0.2011,
+        "action": "share"
+      }
+    },
+    "split_summary": {
+      "train": {
+        "rows": 77155,
+        "no_show_rate": 0.2004
+      },
+      "validation": {
+        "rows": 16245,
+        "no_show_rate": 0.2002
+      },
+      "test": {
+        "rows": 16499,
+        "no_show_rate": 0.2052
+      }
+    },
+    "bias_representation": [
+      {
+        "attribute": "gender",
+        "group": "F",
+        "records": 71416.0,
+        "no_show_rate": 0.2024,
+        "share": 0.6498
+      },
+      {
+        "attribute": "gender",
+        "group": "M",
+        "records": 38483.0,
+        "no_show_rate": 0.1987,
+        "share": 0.3502
+      },
+      {
+        "attribute": "age_band",
+        "group": "0-5",
+        "records": 11705.0,
+        "no_show_rate": 0.186,
+        "share": 0.1065
+      },
+      {
+        "attribute": "age_band",
+        "group": "18-34",
+        "records": 24068.0,
+        "no_show_rate": 0.2389,
+        "share": 0.219
+      },
+      {
+        "attribute": "age_band",
+        "group": "35-54",
+        "records": 29798.0,
+        "no_show_rate": 0.1974,
+        "share": 0.2711
+      },
+      {
+        "attribute": "age_band",
+        "group": "55-69",
+        "records": 19527.0,
+        "no_show_rate": 0.1577,
+        "share": 0.1777
+      },
+      {
+        "attribute": "age_band",
+        "group": "6-17",
+        "records": 15554.0,
+        "no_show_rate": 0.243,
+        "share": 0.1415
+      },
+      {
+        "attribute": "age_band",
+        "group": "70+",
+        "records": 9247.0,
+        "no_show_rate": 0.1548,
+        "share": 0.0841
+      },
+      {
+        "attribute": "scholarship",
+        "group": "0",
+        "records": 99097.0,
+        "no_show_rate": 0.1972,
+        "share": 0.9017
+      },
+      {
+        "attribute": "scholarship",
+        "group": "1",
+        "records": 10802.0,
+        "no_show_rate": 0.2367,
+        "share": 0.0983
+      },
+      {
+        "attribute": "has_disability",
+        "group": "0",
+        "records": 107685.0,
+        "no_show_rate": 0.2015,
+        "share": 0.9799
+      },
+      {
+        "attribute": "has_disability",
+        "group": "1",
+        "records": 2214.0,
+        "no_show_rate": 0.1784,
+        "share": 0.0201
+      }
+    ]
+  },
+  "n_train": 77155,
+  "n_val": 16245,
+  "n_test": 16499,
+  "train_no_show": 0.20036290583889574,
+  "val_no_show": 0.20024622960911048,
+  "test_no_show": 0.2052245590641857,
+  "date_min": "2016-04-29",
+  "date_max": "2016-06-08",
+  "features": [
+    "age",
+    "lead_days",
+    "prior_visits",
+    "prior_no_shows",
+    "prior_no_show_rate",
+    "chronic_count",
+    "scholarship",
+    "hypertension",
+    "diabetes",
+    "same_day",
+    "first_visit",
+    "appt_weekday"
+  ],
+  "necessity": {
+    "table": [
+      {
+        "feature": "alcoholism",
+        "cv_pr_auc_with": 0.3811074483892412,
+        "cv_pr_auc_without": 0.38047775373521237,
+        "delta": 0.0006296946540288451,
+        "decision": "drop as input (audit only)"
+      },
+      {
+        "feature": "has_disability",
+        "cv_pr_auc_with": 0.3811074483892412,
+        "cv_pr_auc_without": 0.38236531514826394,
+        "delta": -0.00125786675902273,
+        "decision": "drop as input (audit only)"
+      }
+    ],
+    "baseline_cv_pr_auc": 0.3811074483892412,
+    "baseline_sd": 0.0028760153207134363,
+    "dropped": [
+      "alcoholism",
+      "has_disability"
+    ],
+    "final_features": [
+      "age",
+      "lead_days",
+      "prior_visits",
+      "prior_no_shows",
+      "prior_no_show_rate",
+      "chronic_count",
+      "scholarship",
+      "hypertension",
+      "diabetes",
+      "same_day",
+      "first_visit",
+      "appt_weekday"
+    ],
+    "tolerance": 0.005
+  },
+  "bias": {
+    "gender": [
+      {
+        "group": "F",
+        "share": 0.6497180999287149,
+        "no_show_rate": 0.2023778651080213
+      },
+      {
+        "group": "M",
+        "share": 0.35028190007128507,
+        "no_show_rate": 0.1966254717679272
+      }
+    ],
+    "age_band": [
+      {
+        "group": "0-5",
+        "share": 0.10703130062860476,
+        "no_show_rate": 0.1849116008718818
+      },
+      {
+        "group": "18-34",
+        "share": 0.21786015164279696,
+        "no_show_rate": 0.23957403771788924
+      },
+      {
+        "group": "35-54",
+        "share": 0.27079256043030264,
+        "no_show_rate": 0.19413200593500216
+      },
+      {
+        "group": "55-69",
+        "share": 0.17914587518631325,
+        "no_show_rate": 0.16191578642743454
+      },
+      {
+        "group": "6-17",
+        "share": 0.14119629317607413,
+        "no_show_rate": 0.2414172939232605
+      },
+      {
+        "group": "70+",
+        "share": 0.08397381893590823,
+        "no_show_rate": 0.15141225497762
+      }
+    ],
+    "scholarship": [
+      {
+        "group": "0",
+        "share": 0.9025597822564967,
+        "no_show_rate": 0.19689245659634963
+      },
+      {
+        "group": "1",
+        "share": 0.09744021774350334,
+        "no_show_rate": 0.23250864591646714
+      }
+    ],
+    "has_disability": [
+      {
+        "group": "0",
+        "share": 0.9794439764111205,
+        "no_show_rate": 0.2007436911961254
+      },
+      {
+        "group": "1",
+        "share": 0.020556023588879528,
+        "no_show_rate": 0.18221941992433796
+      }
+    ]
+  },
+  "results": {
+    "baseline_majority": {
+      "accuracy": 0.7947754409358143,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "pr_auc": 0.2052245590641857,
+      "flag_rate": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3386,
+      "tn": 13113,
+      "roc_auc": 0.5,
+      "brier": 0.2052245590641857,
+      "val_pr_auc": null,
+      "cv_pr_auc": null,
+      "cv_roc_auc": 0.5,
+      "threshold": 0.5,
+      "params": {
+        "strategy": "most_frequent"
+      }
+    },
+    "baseline_lead_time_rule": {
+      "accuracy": 0.6142796533123219,
+      "precision": 0.31070429697431984,
+      "recall": 0.7217956290608387,
+      "f1": 0.43441166014930677,
+      "pr_auc": 0.30966851242566246,
+      "flag_rate": 0.47675616704042667,
+      "tp": 2444,
+      "fp": 5422,
+      "fn": 942,
+      "tn": 7691,
+      "roc_auc": 0.6988826033907907,
+      "brier": null,
+      "val_pr_auc": 0.3035942164241694,
+      "cv_pr_auc": null,
+      "cv_roc_auc": 0.6989006783797203,
+      "threshold": 5.0,
+      "params": {
+        "rule": "flag if lead_days >= 5"
+      }
+    },
+    "logistic_regression": {
+      "accuracy": 0.6499181768592036,
+      "precision": 0.33375069560378406,
+      "recall": 0.7085056113408151,
+      "f1": 0.45375449215055796,
+      "pr_auc": 0.37906274996752165,
+      "flag_rate": 0.43566276744045096,
+      "tp": 2399,
+      "fp": 4789,
+      "fn": 987,
+      "tn": 8324,
+      "roc_auc": 0.7334431471201595,
+      "brier": 0.21263319874575037,
+      "cv_pr_auc": 0.3623185792479034,
+      "cv_pr_auc_std": 0.0019186037022916724,
+      "cv_roc_auc": 0.7283749073148504,
+      "val_pr_auc": 0.34431827315722074,
+      "val_roc_auc": 0.719666061850448,
+      "val_recall_at_threshold": 0.7002766676913618,
+      "val_precision_at_threshold": 0.31989889060525206,
+      "threshold": 0.5621705430715049,
+      "threshold_medium": 0.4682620802317092,
+      "fit_seconds": 10.8,
+      "params": {
+        "C": 0.2481,
+        "penalty": "l1"
+      }
+    },
+    "random_forest": {
+      "accuracy": 0.6576156130674586,
+      "precision": 0.3396627462094374,
+      "recall": 0.7079149438865918,
+      "f1": 0.45906348750359094,
+      "pr_auc": 0.3841734301862306,
+      "flag_rate": 0.42772289229650284,
+      "tp": 2397,
+      "fp": 4660,
+      "fn": 989,
+      "tn": 8453,
+      "roc_auc": 0.7420514507253029,
+      "brier": 0.20994528995747883,
+      "cv_pr_auc": 0.37994567859421563,
+      "cv_pr_auc_std": 0.002816300887599824,
+      "cv_roc_auc": 0.7372096316642321,
+      "val_pr_auc": 0.3681244312481444,
+      "val_roc_auc": 0.7320832186545501,
+      "val_recall_at_threshold": 0.7002766676913618,
+      "val_precision_at_threshold": 0.3255681006145491,
+      "threshold": 0.5601986976241508,
+      "threshold_medium": 0.492449571680364,
+      "fit_seconds": 24.3,
+      "params": {
+        "n_estimators": 200,
+        "min_samples_leaf": 5,
+        "max_features": "sqrt",
+        "max_depth": 8
+      }
+    },
+    "xgboost": {
+      "accuracy": 0.6617976847081641,
+      "precision": 0.34243033611031315,
+      "recall": 0.7040756054341406,
+      "f1": 0.46076536528797835,
+      "pr_auc": 0.39764152966361355,
+      "flag_rate": 0.42196496757379237,
+      "tp": 2384,
+      "fp": 4578,
+      "fn": 1002,
+      "tn": 8535,
+      "roc_auc": 0.7446370115839378,
+      "brier": 0.20952217280864716,
+      "cv_pr_auc": 0.3815392347519069,
+      "cv_pr_auc_std": 0.0021964275824288915,
+      "cv_roc_auc": 0.7386500615346211,
+      "val_pr_auc": 0.3672186066483397,
+      "val_roc_auc": 0.7340484730654084,
+      "val_recall_at_threshold": 0.7002766676913618,
+      "val_precision_at_threshold": 0.32976259409380426,
+      "threshold": 0.5610554218292236,
+      "threshold_medium": 0.4566330313682556,
+      "fit_seconds": 22.3,
+      "params": {
+        "subsample": 0.7,
+        "n_estimators": 400,
+        "min_child_weight": 1,
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "colsample_bytree": 0.85
+      }
+    }
+  },
+  "champion": "random_forest",
+  "registry": {
+    "model_name": "jjushycsh_noshow_risk",
+    "version": 1,
+    "alias": "champion",
+    "stage": "Staging"
+  },
+  "temporal_check": {
+    "status": "ok",
+    "cut_date": "2016-06-01",
+    "n_early": 70986,
+    "n_late": 22414,
+    "late_no_show_rate": 0.18283215847238332,
+    "roc_auc": 0.7343767236448016,
+    "pr_auc": 0.3473840150029553,
+    "recall_at_early_threshold": 0.6861883845778428,
+    "precision": 0.30495607851642986,
+    "flag_rate": 0.41139466404925495
+  },
+  "shap": {
+    "importance": {
+      "Lead time (days booked ahead)": 0.09901219326944091,
+      "Same-day appointment": 0.09011720283953141,
+      "Patient age": 0.033656034047466137,
+      "Prior no-show rate": 0.019135156999996364,
+      "Number of prior no-shows": 0.011680023686656748,
+      "Hypertension": 0.0046540781237297164,
+      "First visit (no history)": 0.0037767662905926276,
+      "Number of prior visits": 0.0037691606489497213,
+      "Welfare programme enrolment": 0.0030224489634028844,
+      "Chronic conditions (count)": 0.0026911634084657017,
+      "Appointment on Wednesday": 0.0022073868154352454,
+      "Appointment on Monday": 0.001769709402179034,
+      "Appointment on Thursday": 0.0016509219687460017,
+      "Appointment on Friday": 0.001397094198818078,
+      "Appointment on Tuesday": 0.0009826287187076847,
+      "Diabetes": 0.0008714628850262453,
+      "Appointment on Saturday": 7.461403699791589e-07
+    },
+    "direction": {
+      "Patient age": -0.854799140938323,
+      "Lead time (days booked ahead)": 0.6110361073645445,
+      "Number of prior visits": -0.5665630155406605,
+      "Number of prior no-shows": 0.9539486040677785,
+      "Prior no-show rate": 0.936441994841681,
+      "Chronic conditions (count)": -0.7253741098213048,
+      "Welfare programme enrolment": 0.8023153848595395,
+      "Hypertension": -0.8875392021907152,
+      "Diabetes": 0.6785907595001132,
+      "Same-day appointment": -0.9962735716823281,
+      "First visit (no history)": 0.2081776430120566,
+      "Appointment on Friday": 0.768603825322607,
+      "Appointment on Monday": 0.44270927638495333,
+      "Appointment on Saturday": 0.0,
+      "Appointment on Thursday": -0.8250869969903585,
+      "Appointment on Tuesday": 0.5496037339614445,
+      "Appointment on Wednesday": -0.8936157419825641
+    },
+    "local": [
+      {
+        "case": "high",
+        "prob": 0.8499293008929648,
+        "top_factors": [
+          [
+            "Number of prior no-shows",
+            0.1977567017557502
+          ],
+          [
+            "Prior no-show rate",
+            0.14888804371453593
+          ],
+          [
+            "Lead time (days booked ahead)",
+            -0.10115399690952119
+          ]
+        ]
+      },
+      {
+        "case": "low",
+        "prob": 0.05572354294015281,
+        "top_factors": [
+          [
+            "Lead time (days booked ahead)",
+            -0.1842680842559456
+          ],
+          [
+            "Same-day appointment",
+            -0.1509535393952607
+          ],
+          [
+            "Number of prior visits",
+            -0.05137676090263285
+          ]
+        ]
+      }
+    ],
+    "explainer": "TreeExplainer",
+    "n_explained": 2000
+  },
+  "counterfactuals": [
+    {
+      "test_row": 12858,
+      "age": 0.0,
+      "orig_lead_days": 7,
+      "orig_weekday": "Monday",
+      "orig_prob": 0.6483821311662125,
+      "cf_lead_days": 0,
+      "cf_weekday": "Monday",
+      "cf_prob": 0.1704419810750351,
+      "flips_below_threshold": true
+    },
+    {
+      "test_row": 7381,
+      "age": 24.0,
+      "orig_lead_days": 41,
+      "orig_weekday": "Tuesday",
+      "orig_prob": 0.7728969508130566,
+      "cf_lead_days": 0,
+      "cf_weekday": "Tuesday",
+      "cf_prob": 0.23346832318767924,
+      "flips_below_threshold": true
+    },
+    {
+      "test_row": 10862,
+      "age": 44.0,
+      "orig_lead_days": 17,
+      "orig_weekday": "Monday",
+      "orig_prob": 0.6011480475377415,
+      "cf_lead_days": 7,
+      "cf_weekday": "Thursday",
+      "cf_prob": 0.5478443201942482,
+      "flips_below_threshold": true
+    },
+    {
+      "test_row": 1496,
+      "age": 24.0,
+      "orig_lead_days": 28,
+      "orig_weekday": "Monday",
+      "orig_prob": 0.6928365164859521,
+      "cf_lead_days": 0,
+      "cf_weekday": "Monday",
+      "cf_prob": 0.13921316992623395,
+      "flips_below_threshold": true
+    },
+    {
+      "test_row": 7292,
+      "age": 30.0,
+      "orig_lead_days": 6,
+      "orig_weekday": "Tuesday",
+      "orig_prob": 0.708443524926817,
+      "cf_lead_days": 0,
+      "cf_weekday": "Tuesday",
+      "cf_prob": 0.2165108597986595,
+      "flips_below_threshold": true
+    }
+  ],
+  "dice_status": "DiCE (random) counterfactuals saved to outputs/counterfactuals_dice.csv",
+  "fairness_before": {
+    "gender": {
+      "table": [
+        {
+          "group": "F",
+          "n": 10878,
+          "base_rate": 0.2045412759698474,
+          "selection_rate": 0.4300422871851443,
+          "tpr": 0.7069662921348314,
+          "fpr": 0.3588350860973073,
+          "precision": 0.33625480974775546
+        },
+        {
+          "group": "M",
+          "n": 5621,
+          "base_rate": 0.2065468777797545,
+          "selection_rate": 0.4232342999466287,
+          "tpr": 0.7097329888027563,
+          "fpr": 0.3486547085201794,
+          "precision": 0.346364018495166
+        }
+      ],
+      "dp_difference": 0.0068079872385156115,
+      "di_ratio": 0.984169028392353,
+      "tpr_gap": 0.0027666966679248395,
+      "fpr_gap": 0.01018037757712792,
+      "eo_difference": 0.01018037757712792,
+      "passes_di": true,
+      "passes_tpr": true,
+      "passes_eo": true,
+      "fairlearn_dp_diff": 0.0068079872385156115,
+      "fairlearn_eo_diff": 0.01018037757712792
+    },
+    "age_band": {
+      "table": [
+        {
+          "group": "0-5",
+          "n": 1683,
+          "base_rate": 0.20320855614973263,
+          "selection_rate": 0.5412953060011884,
+          "tpr": 0.935672514619883,
+          "fpr": 0.4407158836689038,
+          "precision": 0.3512623490669594
+        },
+        {
+          "group": "18-34",
+          "n": 3607,
+          "base_rate": 0.24175214859994454,
+          "selection_rate": 0.6498475187136125,
+          "tpr": 0.9254587155963303,
+          "fpr": 0.5619744058500914,
+          "precision": 0.34428327645051193
+        },
+        {
+          "group": "35-54",
+          "n": 4606,
+          "base_rate": 0.20495006513243597,
+          "selection_rate": 0.434433347807208,
+          "tpr": 0.690677966101695,
+          "fpr": 0.3683779355543419,
+          "precision": 0.3258370814592704
+        },
+        {
+          "group": "55-69",
+          "n": 2919,
+          "base_rate": 0.15587529976019185,
+          "selection_rate": 0.09146968139773895,
+          "tpr": 0.210989010989011,
+          "fpr": 0.06939935064935066,
+          "precision": 0.3595505617977528
+        },
+        {
+          "group": "6-17",
+          "n": 2326,
+          "base_rate": 0.24462596732588135,
+          "selection_rate": 0.6242476354256233,
+          "tpr": 0.8787346221441125,
+          "fpr": 0.5418326693227091,
+          "precision": 0.3443526170798898
+        },
+        {
+          "group": "70+",
+          "n": 1358,
+          "base_rate": 0.15022091310751104,
+          "selection_rate": 0.060382916053019146,
+          "tpr": 0.10784313725490197,
+          "fpr": 0.05199306759098787,
+          "precision": 0.2682926829268293
+        }
+      ],
+      "dp_difference": 0.5894646026605933,
+      "di_ratio": 0.09291859138363483,
+      "tpr_gap": 0.827829377364981,
+      "fpr_gap": 0.5099813382591035,
+      "eo_difference": 0.827829377364981,
+      "passes_di": false,
+      "passes_tpr": false,
+      "passes_eo": false,
+      "fairlearn_dp_diff": 0.5894646026605933,
+      "fairlearn_eo_diff": 0.827829377364981
+    },
+    "scholarship": {
+      "table": [
+        {
+          "group": "0",
+          "n": 14825,
+          "base_rate": 0.1979089376053963,
+          "selection_rate": 0.40876897133220913,
+          "tpr": 0.6820040899795501,
+          "fpr": 0.34135060129509714,
+          "precision": 0.3301980198019802
+        },
+        {
+          "group": "1",
+          "n": 1674,
+          "base_rate": 0.27001194743130225,
+          "selection_rate": 0.5955794504181601,
+          "tpr": 0.8761061946902655,
+          "fpr": 0.4918166939443535,
+          "precision": 0.3971915747241725
+        }
+      ],
+      "dp_difference": 0.18681047908595094,
+      "di_ratio": 0.6863382728286039,
+      "tpr_gap": 0.19410210471071543,
+      "fpr_gap": 0.15046609264925637,
+      "eo_difference": 0.19410210471071543,
+      "passes_di": false,
+      "passes_tpr": false,
+      "passes_eo": false,
+      "fairlearn_dp_diff": 0.18681047908595094,
+      "fairlearn_eo_diff": 0.19410210471071543
+    },
+    "has_disability": {
+      "table": [
+        {
+          "group": "0",
+          "n": 16223,
+          "base_rate": 0.2059421808543426,
+          "selection_rate": 0.43130123898169265,
+          "tpr": 0.7123615683926968,
+          "fpr": 0.3584070796460177,
+          "precision": 0.3401457767614692
+        },
+        {
+          "group": "1",
+          "n": 276,
+          "base_rate": 0.16304347826086957,
+          "selection_rate": 0.21739130434782608,
+          "tpr": 0.37777777777777777,
+          "fpr": 0.18614718614718614,
+          "precision": 0.2833333333333333
+        }
+      ],
+      "dp_difference": 0.21390993463386657,
+      "di_ratio": 0.5040358911583225,
+      "tpr_gap": 0.33458379061491905,
+      "fpr_gap": 0.17225989349883156,
+      "eo_difference": 0.33458379061491905,
+      "passes_di": false,
+      "passes_tpr": false,
+      "passes_eo": false,
+      "fairlearn_dp_diff": 0.21390993463386657,
+      "fairlearn_eo_diff": 0.33458379061491905
+    }
+  },
+  "mitigation": {
+    "applied": true,
+    "attribute": "age_band",
+    "group_thresholds": {
+      "0-5": 0.6180696624844297,
+      "18-34": 0.6219138907707439,
+      "35-54": 0.5544740508880276,
+      "55-69": 0.5058938352449771,
+      "6-17": 0.6098912966988196,
+      "70+": 0.4997530583855688
+    },
+    "after": {
+      "gender": {
+        "table": [
+          {
+            "group": "F",
+            "n": 10878,
+            "base_rate": 0.2045412759698474,
+            "selection_rate": 0.46341239198382056,
+            "tpr": 0.7271910112359551,
+            "fpr": 0.395585346122732,
+            "precision": 0.32096806189248167
+          },
+          {
+            "group": "M",
+            "n": 5621,
+            "base_rate": 0.2065468777797545,
+            "selection_rate": 0.4355096957836684,
+            "tpr": 0.7019810508182601,
+            "fpr": 0.36614349775784755,
+            "precision": 0.3329248366013072
+          }
+        ],
+        "dp_difference": 0.027902696200152177,
+        "di_ratio": 0.9397886274022504,
+        "tpr_gap": 0.025209960417694965,
+        "fpr_gap": 0.02944184836488445,
+        "eo_difference": 0.02944184836488445,
+        "passes_di": true,
+        "passes_tpr": true,
+        "passes_eo": true,
+        "fairlearn_dp_diff": 0.027902696200152177,
+        "fairlearn_eo_diff": 0.02944184836488445
+      },
+      "age_band": {
+        "table": [
+          {
+            "group": "0-5",
+            "n": 1683,
+            "base_rate": 0.20320855614973263,
+            "selection_rate": 0.36957813428401665,
+            "tpr": 0.7192982456140351,
+            "fpr": 0.2803877703206562,
+            "precision": 0.3954983922829582
+          },
+          {
+            "group": "18-34",
+            "n": 3607,
+            "base_rate": 0.24175214859994454,
+            "selection_rate": 0.4507901303021902,
+            "tpr": 0.7201834862385321,
+            "fpr": 0.36489945155393055,
+            "precision": 0.3862238622386224
+          },
+          {
+            "group": "35-54",
+            "n": 4606,
+            "base_rate": 0.20495006513243597,
+            "selection_rate": 0.46135475466782455,
+            "tpr": 0.7245762711864406,
+            "fpr": 0.3935008192244675,
+            "precision": 0.32188235294117645
+          },
+          {
+            "group": "55-69",
+            "n": 2919,
+            "base_rate": 0.15587529976019185,
+            "selection_rate": 0.45974648852346695,
+            "tpr": 0.6791208791208792,
+            "fpr": 0.419237012987013,
+            "precision": 0.23025335320417287
+          },
+          {
+            "group": "6-17",
+            "n": 2326,
+            "base_rate": 0.24462596732588135,
+            "selection_rate": 0.5,
+            "tpr": 0.7521968365553603,
+            "fpr": 0.41832669322709165,
+            "precision": 0.36801375752364573
+          },
+          {
+            "group": "70+",
+            "n": 1358,
+            "base_rate": 0.15022091310751104,
+            "selection_rate": 0.44992636229749633,
+            "tpr": 0.6764705882352942,
+            "fpr": 0.4098786828422877,
+            "precision": 0.22585924713584288
+          }
+        ],
+        "dp_difference": 0.13042186571598335,
+        "di_ratio": 0.7391562685680333,
+        "tpr_gap": 0.07572624832006614,
+        "fpr_gap": 0.1388492426663568,
+        "eo_difference": 0.1388492426663568,
+        "passes_di": false,
+        "passes_tpr": true,
+        "passes_eo": false,
+        "fairlearn_dp_diff": 0.13042186571598335,
+        "fairlearn_eo_diff": 0.1388492426663568
+      },
+      "scholarship": {
+        "table": [
+          {
+            "group": "0",
+            "n": 14825,
+            "base_rate": 0.1979089376053963,
+            "selection_rate": 0.4420910623946037,
+            "tpr": 0.701772324471711,
+            "fpr": 0.3780169876377092,
+            "precision": 0.3141592920353982
+          },
+          {
+            "group": "1",
+            "n": 1674,
+            "base_rate": 0.27001194743130225,
+            "selection_rate": 0.5585424133811231,
+            "tpr": 0.827433628318584,
+            "fpr": 0.4590834697217676,
+            "precision": 0.4
+          }
+        ],
+        "dp_difference": 0.11645135098651938,
+        "di_ratio": 0.7915084903193226,
+        "tpr_gap": 0.12566130384687302,
+        "fpr_gap": 0.08106648208405842,
+        "eo_difference": 0.12566130384687302,
+        "passes_di": false,
+        "passes_tpr": false,
+        "passes_eo": false,
+        "fairlearn_dp_diff": 0.11645135098651938,
+        "fairlearn_eo_diff": 0.12566130384687302
+      },
+      "has_disability": {
+        "table": [
+          {
+            "group": "0",
+            "n": 16223,
+            "base_rate": 0.2059421808543426,
+            "selection_rate": 0.45688220427787707,
+            "tpr": 0.7222388506435199,
+            "fpr": 0.388060860114889,
+            "precision": 0.32555315704263355
+          },
+          {
+            "group": "1",
+            "n": 276,
+            "base_rate": 0.16304347826086957,
+            "selection_rate": 0.27898550724637683,
+            "tpr": 0.4444444444444444,
+            "fpr": 0.24675324675324675,
+            "precision": 0.2597402597402597
+          }
+        ],
+        "dp_difference": 0.17789669703150024,
+        "di_ratio": 0.6106289643899044,
+        "tpr_gap": 0.27779440619907547,
+        "fpr_gap": 0.14130761336164224,
+        "eo_difference": 0.27779440619907547,
+        "passes_di": false,
+        "passes_tpr": false,
+        "passes_eo": false,
+        "fairlearn_dp_diff": 0.17789669703150024,
+        "fairlearn_eo_diff": 0.27779440619907547
+      }
+    },
+    "performance_after": {
+      "accuracy": 0.6357961088550821,
+      "precision": 0.32487648551208437,
+      "recall": 0.7185469580626107,
+      "f1": 0.447448275862069,
+      "pr_auc": 0.3841734301862306,
+      "flag_rate": 0.4539062973513546,
+      "tp": 2433,
+      "fp": 5056,
+      "fn": 953,
+      "tn": 8057,
+      "roc_auc": 0.7420514507253029,
+      "brier": 0.20994528995747883
+    },
+    "method": "group-specific thresholds chosen on validation (equal opportunity)",
+    "fairlearn_threshold_optimizer": {
+      "dp_difference": 0.14128743813635825,
+      "di_ratio": 0.7812020099166649,
+      "tpr_gap": 0.08138085742771684,
+      "fpr_gap": 0.1877427196219142,
+      "eo_difference": 0.1877427196219142,
+      "recall": 0.9010632014176019,
+      "flag_rate": 0.6179162373477181
+    }
+  },
+  "sensitivity": [
+    {
+      "scenario": "unchanged",
+      "mean_abs_delta_prob": 0.0,
+      "mean_delta_prob": 0.0,
+      "high_tier_flips_pct": 0.0,
+      "roc_auc": 0.7414127559610112
+    },
+    {
+      "scenario": "lead_days +3",
+      "mean_abs_delta_prob": 0.15143659630195155,
+      "mean_delta_prob": 0.15075439886647796,
+      "high_tier_flips_pct": 22.6,
+      "roc_auc": 0.6577896761461514
+    },
+    {
+      "scenario": "lead_days -3 (floor 0)",
+      "mean_abs_delta_prob": 0.056383129326587664,
+      "mean_delta_prob": -0.05610067847228897,
+      "high_tier_flips_pct": 7.1,
+      "roc_auc": 0.7130844487661843
+    },
+    {
+      "scenario": "lead_days x1.2",
+      "mean_abs_delta_prob": 0.0029190751905012057,
+      "mean_delta_prob": 0.0022195590220015406,
+      "high_tier_flips_pct": 0.7799999999999999,
+      "roc_auc": 0.7415708636157492
+    },
+    {
+      "scenario": "age +5 years",
+      "mean_abs_delta_prob": 0.009831496026526597,
+      "mean_delta_prob": -0.0048724184308894004,
+      "high_tier_flips_pct": 3.56,
+      "roc_auc": 0.7378207146183868
+    },
+    {
+      "scenario": "age -5 years (floor 0)",
+      "mean_abs_delta_prob": 0.009791259663603433,
+      "mean_delta_prob": 0.004415901729639232,
+      "high_tier_flips_pct": 3.94,
+      "roc_auc": 0.7407677472609759
+    },
+    {
+      "scenario": "prior no-show rate +0.10",
+      "mean_abs_delta_prob": 0.010277528739732117,
+      "mean_delta_prob": 0.008613737993722682,
+      "high_tier_flips_pct": 0.66,
+      "roc_auc": 0.7410378821238666
+    },
+    {
+      "scenario": "welfare flag flipped",
+      "mean_abs_delta_prob": 0.019024530816374147,
+      "mean_delta_prob": 0.008156473760297777,
+      "high_tier_flips_pct": 6.660000000000001,
+      "roc_auc": 0.7391496417833039
+    },
+    {
+      "scenario": "Gaussian noise (10% SD) on age and lead time",
+      "mean_abs_delta_prob": 0.07307566533713178,
+      "mean_delta_prob": 0.04106312293309714,
+      "high_tier_flips_pct": 11.26,
+      "roc_auc": 0.6947601830146063
+    }
+  ],
+  "mlflow_runs": 35,
+  "errors": [],
+  "n_iter": 3,
+  "cv_folds": 3,
+  "has": {
+    "mlflow": true,
+    "shap": true,
+    "xgboost": true
+  }
+}
